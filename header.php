@@ -5,7 +5,7 @@
     <meta charset="<?php $this->options->charset(); ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="renderer" content="webkit">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
 <?php
 $the_host = $_SERVER['HTTP_HOST'];
 $request_uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
@@ -20,7 +20,7 @@ $request_uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
 
     <!-- 使用url函数转换相关路径 -->
     <link rel="stylesheet" href="http://cdn.staticfile.org/normalize/2.1.3/normalize.min.css">
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('grid.css'); ?>">
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('lib/grid.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('style.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('icomoon/style.css'); ?>">
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -29,9 +29,19 @@ $request_uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
 
     <script src="http://cdn.staticfile.org/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+<?php if($this->options->importjq){ ?>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script defer src="https://cloud.umami.is/script.js" data-website-id="68698c69-5dc5-4d70-b42e-e45429224292"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+<?php }else{ ?>
+<script src="<?php $this->options->themeUrl('lib/jquery-3.7.1.min.js') ?>"></script>
+<link rel="stylesheet" href="<?php $this->options->themeUrl('lib/jquery-confirm.min.css') ?>">
+<script src="<?php $this->options->themeUrl('lib/jquery-confirm.min.js') ?>"></script>
+<?php } ?>
 
+<?php if(!empty($this->options->umamiid)){ ?>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="<?php echo $this->options->umamiid; ?>"></script>
+<?php } ?>
     <!-- 通过自有函数输出HTML头部信息 -->
     <?php $this->header(); ?>
 </head>
@@ -43,7 +53,7 @@ $request_uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
 <div id="h" class="clearfix o">
 <div id="nav" class="container" style="width:98%;max-width:unset">
     <a href="javascript:;" class="x" onclick = "toggleSidebar();"><div><span class="t"></span><span class="m"></span><span class="b"></span></div></a>
-    <div class="logo"><a href="<?php $this->options->siteUrl(); ?>"><img height="40px" src="<?php $this->options->themeUrl('logo.png'); ?>" height="40px" alt="<?php $this->options->title() ?>" height="40px" /></a></div>
+    <div class="logo"><a href="<?php $this->options->siteUrl(); ?>"><img height="40px" src="<?php $this->options->themeUrl('logo.png'); ?>" height="40px" alt="<?php $this->options->title() ?>" height="40px" id="logo-ctn-img"/></a></div>
     <ul></ul>
 </div>
 </div><!-- end #header -->
@@ -54,6 +64,5 @@ $request_uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
 <div id="body">
     <div class="container">
         <div class="row">
-
-    
-    
+        
+        

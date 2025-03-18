@@ -7,7 +7,7 @@
  * 
  * @package Genius Revolve 3
  * @author Eternal Illusion
- * @version 3.6
+ * @version 3.8
  * @link http://eterill.us.kg
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;

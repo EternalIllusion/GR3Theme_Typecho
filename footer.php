@@ -20,12 +20,12 @@
 <section class="widget">
             <h3 class="widget-title" id="sjnb"><?php _e('最近回复'); ?></h3>
             <ul class="widget-list" id="reccl" style="height:150px;overflow-y:auto; border:#666 1px solid;border-radius:5px;padding:4px;">
-                <?php \Widget\Comments\Recent::alloc()->to($comments); ?>
+                <?php \Widget\Comments\Recent::alloc()->to($commentss); ?>
 
-                <?php while($comments->next()): ?>
+                <?php while($commentss->next()): ?>
             <li class="rec-comment-li">
-           <a href="<?php $comments->permalink(); ?>"><p style="margin:1px;"><?php $comments->gravatar('40', ''); ?><?php $comments->author(false); ?>: </p>
-           <span style="color:#333;margin:1px;"><?php $comments->excerpt(48, '...'); ?></span></a></li><hr />
+           <a href="<?php $commentss->permalink(); ?>"><p style="margin:1px;"><?php $commentss->gravatar('40', ''); ?><?php $commentss->author(false); ?>: </p>
+           <span style="margin:1px;"><?php $commentss->excerpt(48, '...'); ?></span></a></li><hr />
         <?php endwhile; ?>
             </ul>
         </section>
